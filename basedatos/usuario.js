@@ -2,7 +2,7 @@ const conexion = require ('./conexion');
 
 async function insertar(usuario){
     try{
-        await conexion.execute('INSERT INTO usuario(idusuario, nombre, apellido, direccion, telefono, ci, correo, clave) VALUE(?,?,?,?,?,?,?,?)',[usuario.idusuario, usuario.nombre, usuario.apellido, usuario.direccion, usuario.ci, usuario.correo, usuario.clave ]);
+        await conexion.execute('INSERT INTO usuario(idusuario, nombre, apellido, direccion, telefono, ci, digitoRuc , correo, password) VALUE(?,?,?,?,?,?,?,?,?)',[usuario.idusuario, usuario.nombre, usuario.apellido, usuario.direccion, usuario.ci, usuario.digitoRuc, usuario.correo, usuario.password ]);
     }catch(error){
         console.log('Error al insertar usuario en el base de datos');
         console.log(error);
@@ -23,7 +23,7 @@ async function consultar(){
 
 async function update(usuario) {
     try {
-        await conexion.execute('UPDATE producto SET  nombre = ?, apellido = ?, direccion = ?, telefono  = ?, ci = ?  correo = ?, clave = ?, WHERE idusuario = ?', [usuario.nombre, usuario.apellido, usuario.direccion, usuario.ci, usuario.correo, usuario.clave, usuario.idusuario]);
+        await conexion.execute('UPDATE producto SET  nombre = ?, apellido = ?, direccion = ?, telefono  = ?, ci = ?, digitoRuc =?,  correo = ?, password = ?, WHERE idusuario = ?', [usuario.nombre, usuario.apellido, usuario.direccion, usuario.ci, usuario.digitoRuc, usuario.correo, usuario.password, usuario.idusuario]);
     } catch (error) {
         console.log('Error al editar usuario');
         console.log(error);

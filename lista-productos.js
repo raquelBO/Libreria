@@ -1,10 +1,10 @@
 const PRODUCTOS = [
    {idproducto: 1 ,
-    nombrepro: "cuaderno",
-    preciopro:10000, 
-    cantidadpro:5,
-    productooferta:0,
-    marcapro:"maped"} 
+    nombrePro: "cuaderno",
+    precioPro:10000, 
+    cantidadPro:5,
+    produOferta:0,
+    marcaPro:"maped"} 
 ]
 
 module.exports = PRODUCTOS;

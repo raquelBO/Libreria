@@ -3,7 +3,7 @@ const conexion = require ('./conexion');
 
 async function insertar(productos){
     try{
-        await conexion.execute('INSERT INTO productos (idproducto, nombre-pro, precio-pro, cantidad-pro, producto-oferta, marca-pro) VALUE(?,?,?,?,?,?)',[productos.idproducto, productos.nombre-pro, productos.precio-pro, productos.cantidad-pro, productos.producto-oferta, productos.marca-pro]);
+        await conexion.execute('INSERT INTO productos (idproducto, nombrePro, precioPro, cantidadPro, produOferta, marcaPro) VALUE(?,?,?,?,?,?)',[productos.idproducto, productos.nombrePro, productos.precioPro, productos.cantidadPro, productos.produOferta, productos.marcaPro]);
     }catch(error){
         console.log('Error al insertar productos en el base de datos');
         console.log(error);
@@ -24,7 +24,7 @@ async function consultar(){
 
 async function update(productos) {
     try {
-        await conexion.execute('UPDATE producto SET  nombre-pro = ?, precio-pro = ?, cantidad-pro  = ?, producto-oferta  = ?,marca-protitulo = ? WHERE idproducto = ?', [productos.nombre-pro, productos.precio-pro, productos.cantidad-pro, productos.producto-oferta, productos.marca-pro, productos.idproducto]);
+        await conexion.execute('UPDATE producto SET  nombrePro = ?, precioPro = ?, cantidadPro  = ?, produOferta  = ?,marcaPro = ? WHERE idproducto = ?', [productos.nombrePro, productos.precioPro, productos.cantidadPro, productos.produOferta, productos.marcaPro, productos.idproducto]);
     } catch (error) {
         console.log('Error al editar productos');
         console.log(error);

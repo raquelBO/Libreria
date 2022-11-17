@@ -3,7 +3,7 @@ const conexion = require ('./conexion');
 
 async function insertar(pedido){
     try{
-        await conexion.execute('INSERT INTO pedido(idpedido, idusuario, fecha-pedido, fecha-pedido ) VALUE(?,?,?,?)',[ pedido.idpedido, pedido.idusuario, pedido.fecha-pedido, pedido.fecha-entrega]);
+        await conexion.execute('INSERT INTO pedido(idpedido, idusuario, fechaPedido, fechaPedido ) VALUE(?,?,?,?)',[ pedido.idpedido, pedido.idusuario, pedido.fechaPedido, pedido.fechaEntrega]);
     }catch(error){
         console.log('Error al insertar pedido en el base de datos');
         console.log(error);
@@ -24,7 +24,7 @@ async function consultar(){
 
 async function update(pedido) {
     try {
-        await conexion.execute('UPDATE pedido SET  idusuario = ?,  fecha-pedido= ?, fecha-entrega = ?, WHERE idpedido = ?', [pedido.idusuario, pedido.fecha-pedido, pedido.fecha-entrega, pedido.idpedido]);
+        await conexion.execute('UPDATE pedido SET  idusuario = ?,  fechaPedido= ?, fechaEntrega = ?, WHERE idpedido = ?', [pedido.idusuario, pedido.fechaPedido, pedido.fechaEntrega, pedido.idpedido]);
     } catch (error) {
         console.log('Error al editar pedido');
         console.log(error);
