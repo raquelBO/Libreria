@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-const tablaUsuario = require('../basedatos/pedido');
+const tablaPedido = require('../basedatos/pedido');
 
 router.get("/",async (peti,resp)=>{
     try{
@@ -47,7 +47,7 @@ router.put('/', async (peti, resp) => {
 router.delete('/:idpedido', async (peti, resp) => {
     try {
         const idpedidoRecibido = peti.params.idpedido;
-        console.log(idpedidodRecibido);
+        console.log(idpedidoRecibido);
         await tablaPedido.eliminar(idpedidoRecibido);
         resp.sendStatus(200);
     } catch (error) {
