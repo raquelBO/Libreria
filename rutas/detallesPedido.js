@@ -4,7 +4,7 @@ const tablaDetallesPedido = require('../basedatos/detallesPedido');
 
 router.get("/",async (peti,resp)=>{
     try{
-        const listadetallesPedido = await tablaDetallesPedido.select(); 
+        const listadetallesPedido = await tablaDetallesPedido.consultar(); 
         resp. json(listadetallesPedido);
     }catch(e){
         console.log('Error al manejar GET de detallesPedido');

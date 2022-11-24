@@ -4,7 +4,7 @@ const tablaPedido = require('../basedatos/pedido');
 
 router.get("/",async (peti,resp)=>{
     try{
-        const listaPedido = await tablaPedido.select(); 
+        const listaPedido = await tablaPedido.consultar(); 
         resp. json(listaPedido);
     }catch(e){
         console.log('Error al manejar GET de pedido');

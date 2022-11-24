@@ -4,7 +4,7 @@ const tablaUsuario = require('../basedatos/usuario');
 
 router.get("/",async (peti,resp)=>{
     try{
-        const listaUsuario = await tablaUsuario.select(); 
+        const listaUsuario = await tablaUsuario.consultar(); 
         resp. json(listaUsuario);
     }catch(e){
         console.log('Error al manejar GET de usuario');
