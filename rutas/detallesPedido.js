@@ -4,11 +4,12 @@ const tablaDetallesPedido = require('../basedatos/detallesPedido');
 
 router.get("/",async (peti,resp)=>{
     try{
-        const listadetallesPedido = await tablaDetallesPedido.consultar(); 
+        const listadetallesPedido = await tablaDetallesPedido.consultar();
+        /*setTimeout(() => {
+            respuesta.json(listadetallesPedido);
+        }, 3000);*/ 
         resp. json(listadetallesPedido);
     }catch(e){
-        console.log('Error al manejar GET de detallesPedido');
-        console.log(e);
         resp.status(500).send(e.massage);
     }
 });
@@ -16,14 +17,11 @@ router.get("/",async (peti,resp)=>{
 //post
 router.post('/', async (peti, resp) => {
     try {
-        let detallesPedido = peti.body;
-        console.log("Se va a guardar los detallesPedido");
-        console.log(detallesPedido);
-        await tablaDetallesPedido.insertar(detallesPedido);
+        const detallesPedidoRecibido = peti.body;
+        console.log(detallesPedidoRecibido);
+        await tablaDetallesPedido.insertar(detallesPedidoRecibido);
         resp.sendStatus(200);
     } catch (e) {
-        console.log('Error en el POST detallesPedido');
-        console.log(e);
         resp.status(500).send(e.message);
     }
 

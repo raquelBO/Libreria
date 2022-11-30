@@ -8,10 +8,11 @@ const tablaProductos = require('../basedatos/productos');
 router.get('/', async (peti, resp) => {
     try {
         const listaProductos = await tablaProductos.consultar();
+        /*setTimeout(() => {
+            respuesta.json(listaProductos);
+        }, 3000);*/
         resp.json(listaProductos);
     } catch (e) {
-        console.log('Error en el GET de productos');
-        console.log(e);
         resp.status(500).send(e.message);
     }
 });
@@ -19,14 +20,11 @@ router.get('/', async (peti, resp) => {
 //post
 router.post('/', async (peti, resp) => {
     try {
-        let productos = peti.body;
-        console.log("Se va a guardar los productos");
-        console.log(productos);
-        await tablaProductos.insertar(productos);
+        const productosRecibido = peti.body;
+        console.log(productosRecibido);
+        await tablaProductos.insertar(productosRecibido);
         resp.sendStatus(200);
     } catch (e) {
-        console.log('Error en el POST productos');
-        console.log(e);
         resp.status(500).send(e.message);
     }
 

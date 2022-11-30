@@ -4,11 +4,12 @@ const tablaUsuario = require('../basedatos/usuario');
 
 router.get("/",async (peti,resp)=>{
     try{
-        const listaUsuario = await tablaUsuario.consultar(); 
+        const listaUsuario = await tablaUsuario.consultar();
+        /*setTimeout(() => {
+            respuesta.json(listaUsuario);
+        }, 3000);*/ 
         resp. json(listaUsuario);
     }catch(e){
-        console.log('Error al manejar GET de usuario');
-        console.log(e);
         resp.status(500).send(e.massage);
     }
 });
@@ -16,14 +17,11 @@ router.get("/",async (peti,resp)=>{
 //post
 router.post('/', async (peti, resp) => {
     try {
-        let usuario = peti.body;
-        console.log("Se va a guardar los usuario");
-        console.log(usuario);
-        await tablaUsuario.insertar(usuario);
+        const usuarioRecibido = peti.body;
+        console.log(usuarioRecibido);
+        await tablaUsuario.insertar(usuarioRecibido);
         resp.sendStatus(200);
     } catch (e) {
-        console.log('Error en el POST usurario');
-        console.log(e);
         resp.status(500).send(e.message);
     }
 
@@ -51,7 +49,7 @@ router.delete('/:idusuario', async (peti, resp) => {
         await tablaUsuario.eliminar(idusuarioRecibido);
         resp.sendStatus(200);
     } catch (error) {
-        resp.Status(500).send(error.message);
+        resp.status(500).send(error.message);
     }
 });
 

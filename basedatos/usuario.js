@@ -12,7 +12,7 @@ async function getUsuarioPorCi(ci, password){
 
 async function insertar(usuario){
     try{
-        await conexion.execute('INSERT INTO usuario(idusuario, nombre, apellido, direccion, telefono, ci, digitoRuc , correo, password, idtipo) VALUE(?,?,?,?,?,?,?,?,?, sha2(?, 256))',[usuario.idusuario, usuario.nombre, usuario.apellido, usuario.direccion, usuario.ci, usuario.digitoRuc, usuario.correo, usuario.password, usuario.idtipo ]);
+        await conexion.execute('INSERT INTO usuario(idusuario, nombre, apellido, direccion, telefono, ci, digitoRuc , correo, password, idtipo) VALUE(?,?,?,?,?,?,?,?, sha2(?, 256), ?)',[usuario.idusuario, usuario.nombre, usuario.apellido, usuario.direccion, usuario.ci, usuario.digitoRuc, usuario.correo, usuario.password, usuario.idtipo ]);
 
     }catch(error){
         console.log('Error al insertar usuario en el base de datos');

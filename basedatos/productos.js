@@ -3,7 +3,7 @@ const conexion = require ('./conexion');
 
 async function insertar(productos){
     try{
-        await conexion.execute('INSERT INTO productos (idproducto, nombrePro, precioPro, cantidadPro, produOferta, marcaPro) VALUE(?,?,?,?,?,?)',[productos.idproducto, productos.nombrePro, productos.precioPro, productos.cantidadPro, productos.produOferta, productos.marcaPro]);
+        await conexion.execute('INSERT INTO producto (idproducto, nombrePro, precioPro, cantidadPro, produOferta, marcaPro) VALUE(?,?,?,?,?,?)',[productos.idproducto, productos.nombrePro, productos.precioPro, productos.cantidadPro, productos.produOferta, productos.marcaPro]);
     }catch(error){
         console.log('Error al insertar productos en el base de datos');
         console.log(error);

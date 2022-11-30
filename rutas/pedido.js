@@ -6,9 +6,10 @@ router.get("/",async (peti,resp)=>{
     try{
         const listaPedido = await tablaPedido.consultar(); 
         resp. json(listaPedido);
+        /*setTimeout(() => {
+            respuesta.json(listaPedido);
+        }, 3000);*/
     }catch(e){
-        console.log('Error al manejar GET de pedido');
-        console.log(e);
         resp.status(500).send(e.massage);
     }
 });
@@ -16,14 +17,12 @@ router.get("/",async (peti,resp)=>{
 //post
 router.post('/', async (peti, resp) => {
     try {
-        let pedido = peti.body;
-        console.log("Se va a guardar los pedido");
-        console.log(pedido);
-        await tablaPedido.insertar(pedido);
+        const pedidoRecibido = peti.body;
+        console.log(pedidoRecibido);
+        await tablaPedido.insertar(pedidoRecibido);
         resp.sendStatus(200);
     } catch (e) {
-        console.log('Error en el POST pedido');
-        console.log(e);
+        console.error("error al registrar", e);
         resp.status(500).send(e.message);
     }
 
@@ -35,7 +34,7 @@ router.put('/', async (peti, resp) => {
     try {
         const pedidoRecibido = peti.body;
         console.log(pedidoRecibido);
-        await tablaPedido.update(pedidoRecibido);
+        await tablaPedido.update(pedidoRecibido)
         resp.sendStatus(200);
     } catch (error) {
         resp.status(500).send(error.message);
@@ -51,7 +50,7 @@ router.delete('/:idpedido', async (peti, resp) => {
         await tablaPedido.eliminar(idpedidoRecibido);
         resp.sendStatus(200);
     } catch (error) {
-        resp.Status(500).send(error.message);
+        resp.status(500).send(error.message);
     }
 });
 
