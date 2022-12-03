@@ -3,7 +3,9 @@ const conexion = require ('./conexion');
 
 async function insertar(pedido){
     try{
-        await conexion.execute('INSERT INTO pedido(idpedido, idusuario, fechaPedido, fechaEntrega ) VALUE(?,?,?,?)',[ pedido.idpedido, pedido.idusuario, pedido.fechaPedido, pedido.fechaEntrega]);
+        const fechaPedido = new Date(pedido.fechaPedido);
+        const fechaEntrega = new Date(pedido.fechaEntrega);
+        await conexion.execute('INSERT INTO pedido(idpedido, idusuario, fechaPedido, fechaEntrega ) VALUE(?,?,?,?)',[ pedido.idpedido, pedido.idusuario, fechaPedido, fechaEntrega]);
     }catch(error){
         console.log('Error al insertar pedido en el base de datos');
         console.log(error);
