@@ -12,7 +12,7 @@ app.get('/',(peti, resp) => {
     resp.send('Hola Mundo');
 });
 
-app.use('/productos', require('./rutas/productos'));
+app.use('/producto', require('./rutas/producto'));
 app.use('/usuario',require('./rutas/usuario'));
 app.use('/pedido',require('./rutas/pedido'));
 app.use('/detallesPedido', require('./rutas/detallesPedido'));

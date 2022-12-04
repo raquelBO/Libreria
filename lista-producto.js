@@ -1,4 +1,4 @@
-const PRODUCTOS = [
+const PRODUCTO = [
    {idproducto: 1 ,
     nombrePro: "cuaderno",
     precioPro:10000, 
@@ -7,4 +7,4 @@ const PRODUCTOS = [
     marcaPro:"maped"} 
 ]
 
-module.exports = PRODUCTOS;
+module.exports = PRODUCTO;
