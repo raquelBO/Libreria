@@ -1,4 +1,3 @@
-const PRODUCTOS = require('../lista-productos');
 const conexion = require ('./conexion');
 
 async function insertar(pedido){

@@ -29,11 +29,11 @@ router.post('/', async (peti, resp) => {
 
 
 //put
-router.put('/', async (peti, resp) => {
+router.put("/", async (peti, resp) => {
     try {
         const detallesPedidoRecibido = peti.body;
         console.log(detallesPedidoRecibido);
-        await tablaDetallesPedido.update(detallesPedidoRecibido);
+        await tablaDetallesPedido.update(detallesPedidoRecibido)
         resp.sendStatus(200);
     } catch (error) {
         resp.status(500).send(error.message);
@@ -42,14 +42,14 @@ router.put('/', async (peti, resp) => {
 });
 
 //delete
-router.delete('/:idpedido', async (peti, resp) => {
+router.delete("/:idpedido", async (peti, resp) => {
     try {
-        const iddetallesPedidoRecibido = peti.params.idpedido;
+        const iddetallesPedidoRecibido = peti.params.iddetallespedido;
         console.log(iddetallesPedidoRecibido);
-        await tablaPedido.eliminar(iddetallesPedidoRecibido);
+        await tabladetallesPedido.eliminar(iddetallesPedidoRecibido);
         resp.sendStatus(200);
     } catch (error) {
-        resp.Status(500).send(error.message);
+        resp.status(500).send(error.message);
     }
 });
 

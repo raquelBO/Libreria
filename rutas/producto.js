@@ -4,7 +4,7 @@ const tablaProducto = require('./../basedatos/producto');
 
 
 //get
-router.get('/', async (peti, resp) => {
+router.get("/", async (peti, resp) => {
     try {
         const listaProducto = await tablaProducto.consultar();
         /*setTimeout(() => {
@@ -31,7 +31,7 @@ router.post('/', async (peti, resp) => {
 
 
 //put
-router.put('/', async (peti, resp) => {
+router.put("/", async (peti, resp) => {
     try {
         const productoRecibido = peti.body;
         console.log(productoRecibido);
@@ -44,11 +44,11 @@ router.put('/', async (peti, resp) => {
 });
 
 //delete
-router.delete('/:idproducto', async (peti, resp) => {
+router.delete("/:idproducto", async (peti, resp) => {
     try {
-        const idproductoRecibido = peti.params.idproducto;
+        const idproductoRecibido = peti.params.idproducto
         console.log(idproductoRecibido);
-        await tablaProductos.eliminar(idproductoRecibido);
+        await tablaProducto.eliminar(idproductoRecibido);
         resp.sendStatus(200);
     } catch (error) {
         resp.status(500).send(error.message);
