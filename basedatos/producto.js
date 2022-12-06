@@ -24,10 +24,10 @@ async function consultar(){
 async function update(producto) {
     try {
         const[resp] = await conexion.execute(
-            'UPDATE producto SET idproducto = ?, nombrePro = ?, precioPro = ?, cantidadPro  = ?, produOferta  = ?, marcaPro = ? WHERE idproducto = ?',
-            [producto.idproducto, producto.nombrePro, producto.precioPro, producto.cantidadPro, producto.produOferta, producto.marcaPro]);
+            'UPDATE producto SET nombrePro = ?, precioPro = ?, cantidadPro  = ?, produOferta  = ?, marcaPro = ? WHERE idproducto = ?',
+            [producto.nombrePro, producto.precioPro, producto.cantidadPro, producto.produOferta, producto.marcaPro, producto.idproducto]);
          console.log(resp);
-        } catch (error) {
+        }catch (error) {
         console.log('Error al editar productos', error);
         throw error;
     }

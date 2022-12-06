@@ -23,7 +23,7 @@ async function consultar(){
 async function update(detallesPedido) {
     try {
         const [resp] = await conexion.execute(
-            'UPDATE pedido SET  idproducto = ?,  cantidad = ?, precio = ?,  idpedido = ? WHERE iddetallesPedido = ?', 
+            'UPDATE detallespedido SET  idproducto = ?,  cantidad = ?, precio = ?,  idpedido = ? WHERE iddetallesPedido = ?', 
             [detallesPedido.idproducto, detallesPedido.cantidad, detallesPedido.precio, detallesPedido.idpedido,  detallesPedido.iddetallesPedido]
             );
     } catch (error) {

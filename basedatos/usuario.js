@@ -82,7 +82,8 @@ async function consultar(){
 
 async function update(usuario) {
     try {
-        await conexion.execute('UPDATE producto SET  nombre = ?, apellido = ?, direccion = ?, telefono  = ?, ci = ?, digitoRuc =?,  correo = ?, password = ?, idtipo = ?, WHERE idusuario = ?', [usuario.nombre, usuario.apellido, usuario.direccion, usuario.ci, usuario.digitoRuc, usuario.correo, usuario.password,usuario.idtipo , usuario.idusuario]);
+        await conexion.execute('UPDATE usuario SET  nombre = ?, apellido = ?, direccion = ?, telefono  = ?, ci = ?, digitoRuc =?,  correo = ?, password = ?, idtipo = ? WHERE idusuario = ?', 
+        [usuario.nombre, usuario.apellido, usuario.direccion, usuario.telefono, usuario.ci, usuario.digitoRuc, usuario.correo, usuario.password, usuario.idtipo , usuario.idusuario]);
     } catch (error) {
         console.log('Error al editar usuario');
         console.log(error);
@@ -92,7 +93,7 @@ async function update(usuario) {
 
 async function eliminar(idusuario) {
     try {
-        await conexion.execute('DELETE FROM usuario WHERE idusuario = ? ', [idusuario]);
+        await conexion.execute('DELETE FROM usuario WHERE idusuario = ?', [idusuario]);
     } catch (error) {
         console.log('Error al eliminar usuario');
         console.log(error);
