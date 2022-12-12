@@ -4,15 +4,35 @@ const tablaPedido = require('../basedatos/pedido');
 
 router.get("/", async (peti,resp)=>{
     try{
-        const listaPedido = await tablaPedido.consultar(); 
-        resp. json(listaPedido);
+        let listaPedido = [];
+        console.log(peti)
+        const { idusuario } = peti.query;
+        console.log('idusuario recibido -> ', idusuario);
+        if(idusuario != null){
+            listaPedido = await tablaPedido.consultarPorUsuario(idusuario);
+        }else{
+            listaPedido = await tablaPedido.consultar();     
+        }
+        resp.json(listaPedido);
         /*setTimeout(() => {
             respuesta.json(listaPedido);
         }, 3000);*/
     }catch(e){
+        console.error('Error al consultar pedidos ', e)
         resp.status(500).send(e.massage);
     }
 });
+
+/*router.get('/:idusuario', async (peti, resp)=>{
+    try{
+        const { idusuario } = peti.params;
+        const listaPedido = await tablaPedido.consultarPorUsuario(idusuario);
+        resp.json(listaPedido);
+    }catch(error){
+        console.log(error);
+        resp.status(500).send(e.message);
+    }
+})*/
 
 //post
 router.post("/", async (peti, resp) => {
@@ -22,7 +42,7 @@ router.post("/", async (peti, resp) => {
         await tablaPedido.insertar(pedidoRecibido);
         resp.sendStatus(200);
     } catch (error) {
-        resp.status(500).send(e.message);
+        resp.status(500).send(error.message);
     }
 });
 

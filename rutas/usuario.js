@@ -14,6 +14,23 @@ router.get("/",async (peti,resp)=>{
     }
 });
 
+router.get('/:idusuario', async (peti, resp)=>{
+    try{
+        const { idusuario } = peti.params;
+        console.log('idusuario -> ', idusuario);
+        const usuario = await tablaUsuario.getUsuarioPorId(idusuario);
+        if(usuario){
+            resp.json(usuario);
+        }else{
+            console.log('No se encontro el usuario');
+            resp.sendStatus(404);
+        }
+    }catch(error){
+        console.error(error);
+        resp.status(500).send(error.message);
+    }
+})
+
 //post
 router.post('/', async (peti, resp) => {
     try {

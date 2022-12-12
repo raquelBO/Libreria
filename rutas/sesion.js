@@ -7,10 +7,9 @@ const jwtUtils = require('./../utilidades/token-utils');
 router.post("/iniciar", async (peticion, respuesta)=>{
     try{
        const { ci, password } = peticion.body;
-       const usuarios = await tablaUsuario.getUsuarioPorCi(ci, password);
-       if(usuarios.length !== 0){
-          const usuario = usuarios[0];
-          const token = await jwtUtils.generarToken(usuario.id);
+       const usuario = await tablaUsuario.getUsuarioPorCi(ci, password);
+       if(usuario){
+          const token = await jwtUtils.generarToken(usuario.idusuario, usuario.idtipo === 1);
           respuesta.json({token});
         }else{
             respuesta.sendStatus(401);
