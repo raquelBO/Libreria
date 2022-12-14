@@ -62,4 +62,4 @@ async function eliminarPorIdPedido(idpedido){
     }
 }
 
-module.exports = { insertar, consultar, update, eliminar, consultarPorIdPedido, eliminarPorIdPedido }
+module.exports = { insertar, consultar, update, eliminar, consultarPorIdPedido, eliminarPorIdPedido } 
